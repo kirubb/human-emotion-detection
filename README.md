@@ -56,4 +56,4 @@ Music Recommendation:
 Based on the detected emotion, the app uses the Spotify API to suggest mood-appropriate songs.
 
 
-## Jupyter Notebook where training was done is added for reference
+### Note : Jupyter Notebook where training was done is added for reference
