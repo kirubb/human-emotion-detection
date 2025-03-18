@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Emotion Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container results">
+        <h1>Your Results</h1>
+
+        <div class="result-container">
+            <div class="image-container">
+                <h2>Your Image</h2>
+                <img src="{{ url_for('static', filename=image_path) }}" alt="Uploaded image"
+                     onerror="this.style.display='none'">
+                <p class="emotion">Detected emotion: <strong>{{ emotion }}</strong></p>
+            </div>
+
+            <div class="recommendation-container">
+                <h2>Your Song Recommendation</h2>
+                <div class="song-card">
+                    <h3>{{ song.name }}</h3>
+                    <p>By {{ song.artist }}</p>
+
+                    {% if song.preview_url %}
+                    <audio controls>
+                        <source src="{{ song.preview_url }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    {% else %}
+                    <p>No preview available.</p>
+                    {% endif %}
+
+                    <a href="{{ song.url }}" target="_blank" class="spotify-link">Listen on Spotify</a>
+                </div>
+            </div>
+        </div>
+
+        <a href="/" class="back-button">Try Another Photo</a>
+    </div>
+</body>
+</html>
